@@ -1,74 +1,15 @@
 import { asc, desc, eq, sql } from "drizzle-orm";
 import { getD1, getDb } from "../../../db";
 import { auditEvents, roles, users } from "../../../db/schema";
+import { parseJsonArray, ROLE_SEED, USER_SEED } from "../../../lib/rbac-policy";
 
 export const dynamic = "force-dynamic";
-
-const ROLE_SEED = [
-  {
-    id: "support_analyst",
-    name: "Support Analyst",
-    department: "Customer Operations",
-    description: "Resolves customer cases without security or administrative access.",
-    permissions: ["tickets.read", "tickets.update", "knowledge.read", "customers.read"],
-    privileged: false,
-  },
-  {
-    id: "soc_analyst",
-    name: "SOC Analyst",
-    department: "Security Operations",
-    description: "Investigates security alerts and maintains incident cases.",
-    permissions: ["siem.read", "alerts.investigate", "cases.update", "threatintel.read"],
-    privileged: false,
-  },
-  {
-    id: "finance_specialist",
-    name: "Finance Specialist",
-    department: "Finance",
-    description: "Reviews billing records and prepares controlled financial reports.",
-    permissions: ["billing.read", "invoices.approve", "reports.export"],
-    privileged: false,
-  },
-  {
-    id: "people_ops",
-    name: "People Operations",
-    department: "People",
-    description: "Manages employee profiles and standard onboarding workflows.",
-    permissions: ["directory.read", "profiles.update", "onboarding.manage"],
-    privileged: false,
-  },
-  {
-    id: "application_admin",
-    name: "Application Administrator",
-    department: "Platform Engineering",
-    description: "Configures applications and assigns roles under privileged controls.",
-    permissions: ["apps.configure", "roles.assign", "audit.export", "directory.read"],
-    privileged: true,
-  },
-] as const;
-
-const USER_SEED = [
-  { id: "usr_maya_patel", name: "Maya Patel", email: "maya.patel@northstar.example", department: "Customer Operations", manager: "Priya Shah", roleId: "support_analyst" },
-  { id: "usr_noah_kim", name: "Noah Kim", email: "noah.kim@northstar.example", department: "Security Operations", manager: "Avery Brooks", roleId: "soc_analyst" },
-  { id: "usr_elena_torres", name: "Elena Torres", email: "elena.torres@northstar.example", department: "People", manager: "Rina Das", roleId: "people_ops" },
-  { id: "usr_david_okafor", name: "David Okafor", email: "david.okafor@northstar.example", department: "Finance", manager: "Marta Silva", roleId: "finance_specialist" },
-] as const;
 
 type AuditMetadata = {
   addedPermissions?: string[];
   removedPermissions?: string[];
   note?: string;
 };
-
-function parseJsonArray(value: string | null | undefined) {
-  if (!value) return [];
-  try {
-    const parsed = JSON.parse(value);
-    return Array.isArray(parsed) ? parsed.filter((item) => typeof item === "string") : [];
-  } catch {
-    return [];
-  }
-}
 
 function parseMetadata(value: string): AuditMetadata {
   try {

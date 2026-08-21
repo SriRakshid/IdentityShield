@@ -36,3 +36,18 @@ export const auditEvents = sqliteTable("audit_events", {
   eventHash: text("event_hash").notNull(),
   createdAt: text("created_at").notNull(),
 });
+
+export const accessDecisions = sqliteTable("access_decisions", {
+  id: integer("id").primaryKey({ autoIncrement: true }),
+  decisionKey: text("decision_key").notNull().unique(),
+  decisionType: text("decision_type").notNull(),
+  subjectId: text("subject_id").notNull(),
+  subjectName: text("subject_name").notNull(),
+  roleId: text("role_id").notNull(),
+  roleName: text("role_name").notNull(),
+  permission: text("permission").notNull(),
+  decision: text("decision").notNull(),
+  rationale: text("rationale").notNull(),
+  control: text("control").notNull(),
+  createdAt: text("created_at").notNull(),
+});

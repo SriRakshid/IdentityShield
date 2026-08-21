@@ -1,6 +1,7 @@
 "use client";
 
 import { FormEvent, useEffect, useMemo, useState } from "react";
+import Link from "next/link";
 
 type Role = {
   id: string;
@@ -199,11 +200,11 @@ export default function Home() {
         </div>
         <nav className="primary-nav" aria-label="Primary navigation">
           <p className="nav-label">WORKSPACE</p>
-          <button><Icon name="grid" />Overview</button>
-          <button className="active"><Icon name="users" />Lifecycle<span>01</span></button>
-          <button><Icon name="ledger" />Evidence log</button>
+          <Link href="/"><Icon name="grid" />Overview</Link>
+          <Link href="/" className="active"><Icon name="users" />Lifecycle<span>01</span></Link>
+          <Link href="#audit-ledger"><Icon name="ledger" />Evidence log</Link>
           <p className="nav-label">CONTROL LABS</p>
-          <button className="future"><Icon name="roles" />Role policies<small>02</small></button>
+          <Link href="/rbac"><Icon name="roles" />Role policies<small>02</small></Link>
           <button className="future"><Icon name="pulse" />Identity threats<small>03</small></button>
           <button className="future"><Icon name="key" />Privileged access<small>04</small></button>
         </nav>
@@ -293,7 +294,7 @@ export default function Home() {
             </article>
           </section>
 
-          <section className="panel ledger-panel">
+          <section className="panel ledger-panel" id="audit-ledger">
             <div className="panel-head">
               <div><span className="step-tag">STEP 04</span><h2>Verify the audit ledger</h2></div>
               <div className="ledger-actions"><span className={`integrity ${lab.stats.chainVerified ? "verified" : "failed"}`}><Icon name={lab.stats.chainVerified ? "check" : "x"} />Hash chain {lab.stats.chainVerified ? "verified" : "failed"}</span><button onClick={exportEvidence}><Icon name="download" />Export evidence</button></div>
