@@ -18,9 +18,9 @@ The working lifecycle lab includes:
 - downloadable JSON evidence for portfolio demonstrations;
 - responsive, keyboard-accessible controls and explicit destructive-action confirmation.
 
-## Lab 02 — Role-Based Access Control Design
+## Lab 02 — Least-Privilege Role Engineering
 
-The interactive RBAC policy studio includes:
+The interactive role-engineering studio applies role-based access control (RBAC) through:
 
 - five department-aligned job roles with one isolated privileged role;
 - a controlled catalogue of 23 standard, sensitive, and privileged entitlements;

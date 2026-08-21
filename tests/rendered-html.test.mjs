@@ -37,7 +37,7 @@ test("renders development preview metadata", async () => {
   assert.match(html, /Verify the audit ledger/i);
 });
 
-test("renders the role-based access control lab", async () => {
+test("renders the least-privilege role engineering lab", async () => {
   const workerUrl = new URL("../dist/server/index.js", import.meta.url);
   workerUrl.searchParams.set("test", `rbac-${process.pid}-${Date.now()}`);
   const { default: worker } = await import(workerUrl.href);
@@ -61,7 +61,7 @@ test("renders the role-based access control lab", async () => {
   assert.match(response.headers.get("content-type") ?? "", /^text\/html\b/i);
   const html = await response.text();
   assert.match(html, developmentPreviewMeta);
-  assert.match(html, /Permission policy studio/i);
+  assert.match(html, /Least-privilege role engineering/i);
   assert.match(html, /Exact permission matrix/i);
   assert.match(html, /Access decision simulator/i);
   assert.match(html, /Authorization decision evidence/i);

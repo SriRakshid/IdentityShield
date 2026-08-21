@@ -202,7 +202,7 @@ export default function RbacLab() {
   function exportEvidence() {
     const evidence = {
       exportedAt: new Date().toISOString(),
-      lab: "IdentityShield — Role-Based Access Control Design",
+      lab: "IdentityShield — Least-Privilege Role Engineering Lab",
       policyMetrics: lab.stats,
       roles: lab.roles,
       segregationOfDutiesRules: lab.sodRules,
@@ -229,7 +229,7 @@ export default function RbacLab() {
           <Link href="/"><Icon name="users" />Lifecycle<span>01</span></Link>
           <Link href="#decision-history"><Icon name="ledger" />Evidence log</Link>
           <p className="nav-label">CONTROL LABS</p>
-          <Link href="/rbac" className="active"><Icon name="roles" />Role policies<small>02</small></Link>
+          <Link href="/rbac" className="active"><Icon name="roles" />Role engineering<small>02</small></Link>
           <button className="future"><Icon name="pulse" />Identity threats<small>03</small></button>
           <button className="future"><Icon name="key" />Privileged access<small>04</small></button>
         </nav>
@@ -242,7 +242,7 @@ export default function RbacLab() {
 
       <section className="workspace">
         <header className="topbar">
-          <div className="crumbs"><span>Control labs</span><Icon name="arrow" size={14} /><strong>Role-based access control</strong></div>
+          <div className="crumbs"><span>Control labs</span><Icon name="arrow" size={14} /><strong>Least-privilege role engineering</strong></div>
           <div className="environment"><span className="status-dot" />SYNTHETIC ENVIRONMENT <b>LAB 02</b></div>
         </header>
 
@@ -250,7 +250,7 @@ export default function RbacLab() {
           <section className="hero-strip rbac-hero">
             <div>
               <p className="eyebrow">ACCESS GOVERNANCE / LEAST PRIVILEGE</p>
-              <h1>Permission policy studio</h1>
+              <h1>Least-privilege role engineering</h1>
               <p>Design job roles, inspect every entitlement mapping, and test authorization decisions against least-privilege and segregation-of-duties controls.</p>
             </div>
             <div className="lab-objective">

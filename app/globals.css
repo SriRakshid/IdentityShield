@@ -187,7 +187,7 @@ button { color: inherit; }
 .warning-icon { width: 46px; height: 46px; display: grid; place-items: center; margin-bottom: 18px; color: var(--danger); border: 1px solid #63373e; background: #25171a; }
 .confirm-modal { width: min(460px, 100%); }
 
-/* Lab 02 — role-based access control */
+/* Lab 02 — least-privilege role engineering */
 .rbac-content { max-width: 1580px; }
 .rbac-hero:after { border-color: rgba(169,156,249,.17); box-shadow: 0 0 0 36px rgba(169,156,249,.022), 0 0 0 72px rgba(169,156,249,.014); }
 .catalogue-status, .live-control, .guardrail { display: inline-flex; align-items: center; gap: 6px; min-height: 28px; padding: 0 9px; border: 1px solid #344638; color: #9dca76; background: #172019; font-size: 8px; font-weight: 700; text-transform: uppercase; letter-spacing: .07em; white-space: nowrap; }

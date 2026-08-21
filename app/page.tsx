@@ -204,7 +204,7 @@ export default function Home() {
           <Link href="/" className="active"><Icon name="users" />Lifecycle<span>01</span></Link>
           <Link href="#audit-ledger"><Icon name="ledger" />Evidence log</Link>
           <p className="nav-label">CONTROL LABS</p>
-          <Link href="/rbac"><Icon name="roles" />Role policies<small>02</small></Link>
+          <Link href="/rbac"><Icon name="roles" />Role engineering<small>02</small></Link>
           <button className="future"><Icon name="pulse" />Identity threats<small>03</small></button>
           <button className="future"><Icon name="key" />Privileged access<small>04</small></button>
         </nav>
